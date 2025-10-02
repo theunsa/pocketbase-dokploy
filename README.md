@@ -79,7 +79,25 @@ COPY ./pb_hooks /pb/pb_hooks
 
 ## Environment Variables
 
-PocketBase can be configured via environment variables. Add to `docker-compose.yml`:
+### Superuser Account (Required)
+
+Set these environment variables in Dokploy UI to automatically create a superuser on first deployment:
+
+- `SUPERUSER_EMAIL` - Email for the admin account
+- `SUPERUSER_PASSWORD` - Password for the admin account
+
+In Dokploy UI:
+1. Go to your application → **Environment** tab
+2. Add the variables:
+   ```
+   SUPERUSER_EMAIL=admin@example.com
+   SUPERUSER_PASSWORD=your-secure-password
+   ```
+3. Redeploy the application
+
+### Additional Configuration
+
+PocketBase can be configured via environment variables. Add to `docker-compose.yml` or Dokploy UI:
 
 ```yaml
 environment:

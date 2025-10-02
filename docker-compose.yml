@@ -6,6 +6,9 @@ services:
         PB_VERSION: 0.30.0
     expose:
       - 8090
+    environment:
+      - SUPERUSER_EMAIL=${SUPERUSER_EMAIL}
+      - SUPERUSER_PASSWORD=${SUPERUSER_PASSWORD}
     volumes:
       - /opt/pocketbase/data:/pb/pb_data
       - /opt/pocketbase/migrations:/pb/pb_migrations
