@@ -136,7 +136,7 @@ This setup includes automatic backups to Cloudflare R2 using rclone.
    - Service Name: `pocketbase`
    - Task Name: `Daily R2 Backup`
    - Schedule: `0 2 * * *` (daily at 2 AM)
-   - Shell Type: `Bash`
+   - Shell Type: `Sh`
    - Command: `/usr/local/bin/backup-r2.sh`
    - Enable the schedule
 
