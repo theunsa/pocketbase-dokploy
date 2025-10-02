@@ -1,0 +1,19 @@
+services:
+  pocketbase:
+    build:
+      context: .
+      args:
+        PB_VERSION: 0.30.0
+    expose:
+      - 8080
+    volumes:
+      - /opt/pocketbase/data:/pb/pb_data
+      - /opt/pocketbase/migrations:/pb/pb_migrations
+      - /opt/pocketbase/public:/pb/pb_public
+    restart: unless-stopped
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
