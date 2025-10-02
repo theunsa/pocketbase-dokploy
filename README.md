@@ -108,6 +108,42 @@ See [PocketBase docs](https://pocketbase.io/docs/going-to-production/) for avail
 
 ## Backup
 
+### Automated Cloudflare R2 Backups
+
+This setup includes automatic backups to Cloudflare R2 using rclone.
+
+#### Setup R2 Backups
+
+1. **Create R2 bucket** in Cloudflare dashboard
+
+2. **Generate R2 API tokens:**
+   - Go to Cloudflare Dashboard → R2 → Manage R2 API Tokens
+   - Create API token with read/write permissions
+   - Note down: Account ID, Access Key ID, Secret Access Key
+
+3. **Configure in Dokploy:**
+   - Go to your application → **Environment** tab
+   - Add R2 credentials:
+   ```
+   R2_ACCOUNT_ID=your-account-id
+   R2_ACCESS_KEY_ID=your-access-key-id
+   R2_SECRET_ACCESS_KEY=your-secret-access-key
+   R2_BUCKET_NAME=your-bucket-name
+   ```
+
+4. **Create scheduled backup in Dokploy:**
+   - Go to **Schedules** tab → **Create Schedule**
+   - Service Name: `pocketbase`
+   - Task Name: `Daily R2 Backup`
+   - Schedule: `0 2 * * *` (daily at 2 AM)
+   - Shell Type: `Bash`
+   - Command: `/usr/local/bin/backup-r2.sh`
+   - Enable the schedule
+
+Backups are stored in your R2 bucket at: `pocketbase-backups/YYYY-MM-DD_HH-MM-SS/`
+
+### Manual Local Backup
+
 Backup the persistent directories on your VPS:
 
 ```bash
