@@ -37,6 +37,7 @@ mkdir -p /opt/pocketbase/{data,migrations,public}
 In Dokploy UI (v0.7.0+):
 - Go to your application settings
 - Add your domain under the Domains section
+- Set **Container Port** to `8090`
 - Dokploy/Traefik will handle SSL automatically
 
 ## Project Structure

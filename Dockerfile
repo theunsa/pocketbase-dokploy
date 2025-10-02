@@ -14,7 +14,7 @@ RUN unzip /tmp/pb.zip -d /pb/
 # Uncomment if you have pb_hooks in your repo
 # COPY ./pb_hooks /pb/pb_hooks
 
-EXPOSE 8080
+EXPOSE 8090
 
 # start PocketBase
-CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
+CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
